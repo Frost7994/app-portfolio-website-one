@@ -22,15 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx("scrollbar-none", font)}>
-        <div className="flex flex-col">
-          {/* navbar */}
-          <main className="min-h-screen flex flex-col flex-grow">
-            {children}
-          </main>
-          {/* Toaster if we use it */}
-        </div>
-      </body>
+      <body className={clsx("scrollbar-none", font)}>{children}</body>
     </html>
   );
 }
