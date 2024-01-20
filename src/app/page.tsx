@@ -18,17 +18,16 @@ const Home = () => {
   const [showBanner, setShowBanner] = useState(true);
 
   return (
-    // page
-    <motion.div layout layoutRoot className="flex flex-col min-h-screen">
+    <motion.div layout layoutRoot className=" flex flex-col h-screen">
       <AnimatePresence initial={false} mode="popLayout">
         {/* banner */}
         {showBanner && (
           <motion.div
+            layout
+            key="banner-section"
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
-            layout
-            key="banner-section"
             className="flex items-center justify-center gap-2 py-1.5 bg-primary-500"
           >
             <p className="text-tertiary-50">
@@ -43,10 +42,14 @@ const Home = () => {
           </motion.div>
         )}
 
-        {/* rest of page */}
-        <motion.div layout key="page-section" className="flex flex-col">
+        {/* page wrapper */}
+        <motion.div
+          layout="position"
+          key="page-section"
+          className="overflow-hidden flex flex-col"
+        >
           {/* navbar */}
-          <nav className="shadow bg-white sticky">
+          <nav className="shadow bg-white">
             <Section className="flex-row justify-between items-center">
               {/* logo */}
               <p className="font-medium">Sellmore</p>
@@ -76,7 +79,7 @@ const Home = () => {
           </nav>
 
           {/* page */}
-          <main className="overflow-y-auto">
+          <main className="overflow-y-scroll scrollbar-none">
             {/* hero */}
             <div className="relative">
               <div
